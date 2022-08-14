@@ -10,6 +10,7 @@ using System.Xml.XPath;
 
 namespace XmlTest
 {
+    //Omar Why?!
     internal class Program
     {
         static void Main(string[] args)
