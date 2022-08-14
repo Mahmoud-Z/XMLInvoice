@@ -5,7 +5,6 @@ using System.Xml.Serialization;
 
 namespace XmlTest
 {
-    //Omar: Hi Gemy Joniour
     public class CompanyName
     {
         [XmlAttribute]
