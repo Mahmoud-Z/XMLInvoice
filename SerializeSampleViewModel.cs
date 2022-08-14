@@ -8,7 +8,7 @@ namespace XmlTest
 {
     public class SerializeSampleViewModel<T>
     {
-        public string Serialize(string xmlFileName,T Entity)
+        public string Serialize(string xmlFileName,T Entity, string invoiceType)
         {
             //XmlAttributeOverrides xOver = new XmlAttributeOverrides();
             //XmlAttributes attrs = new XmlAttributes();
@@ -18,9 +18,9 @@ namespace XmlTest
             var namespaces = new XmlSerializerNamespaces(); 
             namespaces.Add("cac", "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2");
             namespaces.Add("cbc", "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"); 
-            namespaces.Add("ext", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"); 
+            namespaces.Add("ext", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2");
             string ResultText = "";
-            var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(typeof(T),null,null, new XmlRootAttribute(invoiceType), "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2");
             using(var sw = new StringWriter())
             {
                 serializer.Serialize(sw, Entity, namespaces);

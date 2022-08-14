@@ -33,3 +33,14 @@ C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\PC\XmlTest\obj\Debug\XmlTest
 C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\PC\XmlTest\bin\Debug\Newtonsoft.Json.dll
 C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\PC\XmlTest\bin\Debug\Newtonsoft.Json.xml
 C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\PC\XmlTest\obj\Debug\XmlTest.csproj.CopyComplete
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\bin\Debug\XmlTest.exe.config
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\bin\Debug\XmlTest.exe
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\bin\Debug\XmlTest.pdb
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.csproj.AssemblyReference.cache
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.csproj.SuggestedBindingRedirects.cache
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.csproj.CoreCompileInputs.cache
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.csproj.CopyComplete
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.exe
+C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.pdb
