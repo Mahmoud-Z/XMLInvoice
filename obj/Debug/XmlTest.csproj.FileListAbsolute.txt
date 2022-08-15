@@ -55,3 +55,5 @@ F:\Work\XMLInvoice\obj\Debug\XmlTest.csproj.CoreCompileInputs.cache
 F:\Work\XMLInvoice\obj\Debug\XmlTest.csproj.CopyComplete
 F:\Work\XMLInvoice\obj\Debug\XmlTest.exe
 F:\Work\XMLInvoice\obj\Debug\XmlTest.pdb
+F:\Work\XMLInvoice\bin\Debug\Test\sample.xml
+F:\Work\XMLInvoice\bin\Debug\Test\XML Test.xml

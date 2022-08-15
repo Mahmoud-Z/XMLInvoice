@@ -58,7 +58,7 @@ namespace XmlTest
             #region commentedInvoice
             Invoice invoice = new Invoice();
             invoice.ProfileID = "";
-            invoice.ID = "test";
+            invoice.ID = new ID { Value = "test" };
             invoice.UUID = "";
             invoice.InvoiceTypeCode = new InvoiceTypeCode
             {
@@ -69,29 +69,29 @@ namespace XmlTest
             invoice.TaxCurrencyCode = "";
             invoice.OrderReference = new OrderReference
             {
-                ID = "test"
+                ID = new ID { Value = "" }
             };
             invoice.BillingReference = new BillingReference
             {
                 InvoiceDocumentReference = new BillingReferenceInvoiceDocumentReference
                 {
-                    ID = "test"
+                    ID = new ID { Value = "" }
                 }
             };
             invoice.ContractDocumentReference = new ContractDocumentReference
             {
-                ID = "test"
+                ID = new ID { Value = "" }
             };
             invoice.AdditionalDocumentReference = new AdditionalDocumentReference[]
             {
                 new AdditionalDocumentReference
                 {
-                    ID= "test",
+                    ID= new ID { Value = "" },
                     UUID="",
                 },
                 new AdditionalDocumentReference
                 {
-                    ID= "test",
+                    ID= new ID { Value = "" },
                     Attachment=new AdditionalDocumentReferenceAttachment
                     {
                         EmbeddedDocumentBinaryObject=new EmbeddedDocumentBinaryObject
@@ -102,7 +102,7 @@ namespace XmlTest
                 },
                 new AdditionalDocumentReference
                 {
-                    ID= "test",
+                    ID= new ID { Value = "" },
                     Attachment=new AdditionalDocumentReferenceAttachment
                     {
                         EmbeddedDocumentBinaryObject=new EmbeddedDocumentBinaryObject
@@ -122,7 +122,7 @@ namespace XmlTest
                         {
                             SignatureInformation = new SignatureInformation
                             {
-                                ID = "test",
+                                ID = new ID { Value = "" },
                                 ReferencedSignatureID = "",
                                 Signature = new Signature
                                 {
@@ -210,7 +210,7 @@ namespace XmlTest
             };
             invoice.Signature = new Signature1
             {
-                ID = "test",
+                ID = new ID { Value = "" },
                 SignatureMethod = ""
             };
             invoice.AccountingSupplierParty = new AccountingSupplierParty
@@ -219,7 +219,7 @@ namespace XmlTest
                 {
                     PartyIdentification = new AccountingSupplierPartyPartyPartyIdentification
                     {
-                        ID = "test",
+                        ID = new ID { Value = "QR", schemeID = "ZZZ" },
                     },
                     PartyLegalEntity = new AccountingSupplierPartyPartyPartyLegalEntity
                     {
@@ -230,7 +230,7 @@ namespace XmlTest
                         CompanyID = "",
                         TaxScheme = new AccountingSupplierPartyPartyPartyTaxSchemeTaxScheme
                         {
-                            ID = "test",
+                            ID = new ID { Value = "" },
                         },
                     },
                     PostalAddress = new AccountingSupplierPartyPartyPostalAddress
@@ -267,7 +267,7 @@ namespace XmlTest
                         CompanyID = "",
                         TaxScheme = new AccountingCustomerPartyPartyPartyTaxSchemeTaxScheme
                         {
-                            ID = "test",
+                            ID = new ID { Value = "" },
                         },
                     },
                     PostalAddress = new AccountingCustomerPartyPartyPostalAddress
@@ -297,7 +297,7 @@ namespace XmlTest
                 InstructionNote = "",
                 PayeeFinancialAccount = new PaymentMeansPayeeFinancialAccount
                 {
-                    ID = "test",
+                    ID = new ID { Value = "" },
                     PaymentNote = "",
                 },
                 PaymentMeansCode = new PaymentMeansCode
@@ -322,11 +322,11 @@ namespace XmlTest
                 MultiplierFactorNumeric = 0,
                 TaxCategory = new AllowanceChargeTaxCategory
                 {
-                    ID = "test",
+                    ID = new ID { Value = "" },
                     Percent = 0,
                     TaxScheme = new AllowanceChargeTaxCategoryTaxScheme
                     {
-                        ID = "test"
+                        ID = new ID { Value = "" }
                     }
                 }
             };
@@ -390,14 +390,14 @@ namespace XmlTest
                         TaxExemptionReasonCode = 0,
                         TaxScheme = new TaxTotalTaxSubtotalTaxCategoryTaxScheme
                         {
-                            ID = "test"
+                            ID = new ID { Value = "" }
                         }
                     },
                 },
             };
             invoice.InvoiceLine = new InvoiceLine
             {
-                ID = "test",
+                ID = new ID { Value = "" },
                 AllowanceCharge = new InvoiceLineAllowanceCharge
                 {
                     Amount = new Amount
@@ -422,7 +422,7 @@ namespace XmlTest
                 {
                     BuyersItemIdentification = new InvoiceLineItemBuyersItemIdentification
                     {
-                        ID = "test"
+                        ID = new ID { Value = "" }
                     },
                     ClassifiedTaxCategory = new InvoiceLineItemClassifiedTaxCategory
                     {
@@ -436,7 +436,7 @@ namespace XmlTest
                     Name = "",
                     SellersItemIdentification = new InvoiceLineItemSellersItemIdentification
                     {
-                        ID = "test"
+                        ID = new ID { Value = "" }
                     },
                     StandardItemIdentification = new InvoiceLineItemStandardItemIdentification
                     {
