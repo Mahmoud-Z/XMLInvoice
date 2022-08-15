@@ -29,7 +29,7 @@ namespace XmlTest
             //}
             //Console.WriteLine(sb.ToString());            
             //----------------------------------Fill xml with data-----------------------------------
-            string xmlFileName = @"C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\Test\";
+            string xmlFileName = @"Test\";
             SerializeSampleViewModel<Invoice> serializeSample = new SerializeSampleViewModel<Invoice>();
             //CustomerRoot Entity = new CustomerRoot();
             //Entity.Customers = new List<Customer>(){
@@ -58,7 +58,7 @@ namespace XmlTest
             #region commentedInvoice
             Invoice invoice = new Invoice();
             invoice.ProfileID = "";
-            invoice.ID = new ID { Value = "test" };
+            invoice.ID = "test";
             invoice.UUID = "";
             invoice.InvoiceTypeCode = new InvoiceTypeCode
             {
@@ -69,29 +69,29 @@ namespace XmlTest
             invoice.TaxCurrencyCode = "";
             invoice.OrderReference = new OrderReference
             {
-                ID = new ID { Value = "" }
+                ID = "test"
             };
             invoice.BillingReference = new BillingReference
             {
                 InvoiceDocumentReference = new BillingReferenceInvoiceDocumentReference
                 {
-                    ID = new ID { Value = "" }
+                    ID = "test"
                 }
             };
             invoice.ContractDocumentReference = new ContractDocumentReference
             {
-                ID = new ID { Value = "" }
+                ID = "test"
             };
             invoice.AdditionalDocumentReference = new AdditionalDocumentReference[]
             {
                 new AdditionalDocumentReference
                 {
-                    ID= new ID { Value = "" },
+                    ID= "test",
                     UUID="",
                 },
                 new AdditionalDocumentReference
                 {
-                    ID= new ID { Value = "" },
+                    ID= "test",
                     Attachment=new AdditionalDocumentReferenceAttachment
                     {
                         EmbeddedDocumentBinaryObject=new EmbeddedDocumentBinaryObject
@@ -102,7 +102,7 @@ namespace XmlTest
                 },
                 new AdditionalDocumentReference
                 {
-                    ID= new ID { Value = "" },
+                    ID= "test",
                     Attachment=new AdditionalDocumentReferenceAttachment
                     {
                         EmbeddedDocumentBinaryObject=new EmbeddedDocumentBinaryObject
@@ -122,7 +122,7 @@ namespace XmlTest
                         {
                             SignatureInformation = new SignatureInformation
                             {
-                                ID = new ID { Value = "" },
+                                ID = "test",
                                 ReferencedSignatureID = "",
                                 Signature = new Signature
                                 {
@@ -210,7 +210,7 @@ namespace XmlTest
             };
             invoice.Signature = new Signature1
             {
-                ID = new ID { Value = "" },
+                ID = "test",
                 SignatureMethod = ""
             };
             invoice.AccountingSupplierParty = new AccountingSupplierParty
@@ -219,7 +219,7 @@ namespace XmlTest
                 {
                     PartyIdentification = new AccountingSupplierPartyPartyPartyIdentification
                     {
-                        ID = new ID { Value = "QR", schemeID = "ZZZ" },
+                        ID = "test",
                     },
                     PartyLegalEntity = new AccountingSupplierPartyPartyPartyLegalEntity
                     {
@@ -230,7 +230,7 @@ namespace XmlTest
                         CompanyID = "",
                         TaxScheme = new AccountingSupplierPartyPartyPartyTaxSchemeTaxScheme
                         {
-                            ID = new ID { Value = "" },
+                            ID = "test",
                         },
                     },
                     PostalAddress = new AccountingSupplierPartyPartyPostalAddress
@@ -267,7 +267,7 @@ namespace XmlTest
                         CompanyID = "",
                         TaxScheme = new AccountingCustomerPartyPartyPartyTaxSchemeTaxScheme
                         {
-                            ID = new ID { Value = "" },
+                            ID = "test",
                         },
                     },
                     PostalAddress = new AccountingCustomerPartyPartyPostalAddress
@@ -297,7 +297,7 @@ namespace XmlTest
                 InstructionNote = "",
                 PayeeFinancialAccount = new PaymentMeansPayeeFinancialAccount
                 {
-                    ID = new ID { Value = "" },
+                    ID = "test",
                     PaymentNote = "",
                 },
                 PaymentMeansCode = new PaymentMeansCode
@@ -322,11 +322,11 @@ namespace XmlTest
                 MultiplierFactorNumeric = 0,
                 TaxCategory = new AllowanceChargeTaxCategory
                 {
-                    ID = new ID { Value = "" },
+                    ID = "test",
                     Percent = 0,
                     TaxScheme = new AllowanceChargeTaxCategoryTaxScheme
                     {
-                        ID = new ID { Value = "" }
+                        ID = "test"
                     }
                 }
             };
@@ -390,14 +390,14 @@ namespace XmlTest
                         TaxExemptionReasonCode = 0,
                         TaxScheme = new TaxTotalTaxSubtotalTaxCategoryTaxScheme
                         {
-                            ID = new ID { Value = "" }
+                            ID = "test"
                         }
                     },
                 },
             };
             invoice.InvoiceLine = new InvoiceLine
             {
-                ID = new ID { Value = "" },
+                ID = "test",
                 AllowanceCharge = new InvoiceLineAllowanceCharge
                 {
                     Amount = new Amount
@@ -422,7 +422,7 @@ namespace XmlTest
                 {
                     BuyersItemIdentification = new InvoiceLineItemBuyersItemIdentification
                     {
-                        ID = new ID { Value = "" }
+                        ID = "test"
                     },
                     ClassifiedTaxCategory = new InvoiceLineItemClassifiedTaxCategory
                     {
@@ -436,7 +436,7 @@ namespace XmlTest
                     Name = "",
                     SellersItemIdentification = new InvoiceLineItemSellersItemIdentification
                     {
-                        ID = new ID { Value = "" }
+                        ID = "test"
                     },
                     StandardItemIdentification = new InvoiceLineItemStandardItemIdentification
                     {
@@ -493,6 +493,124 @@ namespace XmlTest
             #endregion
             //Entity = serializeSample.Deserialize(xmlFileName, Entity);
             #region XML Compare
+            //XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+            //XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+            //XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
+            //XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
+            //IEnumerable<XElement> elementsDifferent = from xmlElement in doc.Root.Descendants()
+            //                                          where !(from simmpleElement in doc2.Root.Descendants()
+            //                                                  select simmpleElement.Name.ToString()).Contains(xmlElement.Name.ToString())
+            //                                          select xmlElement;
+            //IEnumerable<XElement> elementsRepeated = (from xmlElement in doc.Root.Descendants()
+            //                                          group xmlElement by xmlElement.Name into x
+            //                                          select x.First());
+            //foreach (XElement element in elementsRepeated)
+            //{
+            //    if (doc.Root.Descendants(element.Name.ToString()).Count() > 1 && doc.Root.Descendants(element.Name.ToString()).Attributes().Count() > 0)
+            //        foreach (var item in doc.Root.Descendants(element.Name.ToString()))
+            //        {
+            //            string path = string.Join("/", item.Ancestors().Select(e => e.Name.LocalName).Reverse());
+            //            Console.WriteLine(path + "/" + item.Name.LocalName);
+            //            foreach (XAttribute i in item.Attributes())
+            //            {
+            //                Console.WriteLine(i);
+            //            }
+            //        }
+            //}
+            #endregion
+            #region XML herirachey Compare
+            //XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+            //XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
+            //XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
+            //#region check xml structure
+            //var elementsJoined = (from xmlElement in doc.Root.Descendants()
+            //                        join simmpleElement in doc2.Root.Descendants()
+            //                        on new
+            //                        {
+            //                            Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                            name = xmlElement.Name.LocalName
+            //                        } equals new
+            //                        {
+            //                            Ancestors = string.Join("/", simmpleElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                            name = simmpleElement.Name.LocalName
+            //                        }
+            //                        select new
+            //                        {
+            //                            Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                            name = xmlElement.Name.LocalName
+            //                        });
+            //var XMLDifferences = (from xmlElement in doc.Root.Descendants()
+            //                      where !elementsJoined.Contains(new
+            //                      {
+            //                          Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                          name = xmlElement.Name.LocalName
+            //                      })
+            //                      select new
+            //                      {
+            //                          Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                          name = xmlElement.Name.LocalName
+            //                      });
+            //#endregion
+            //#region check the difference in tags
+            //var repeatedElements = (from originalElement in doc.Root.Descendants()
+            //                       join newElement in doc2.Root.Descendants()
+            //                       on new
+            //                       {
+            //                           count = doc.Root.Descendants(originalElement.Name).Count(),
+            //                           name = originalElement.Name.LocalName
+            //                       } equals new
+            //                       {
+            //                           count = doc2.Root.Descendants(newElement.Name).Count(),
+            //                           name = newElement.Name.LocalName
+            //                       }
+            //                       select new
+            //                       {
+            //                           count = doc.Root.Descendants(originalElement.Name).Count(),
+            //                           name = originalElement.Name.LocalName
+            //                       }).Distinct();
+            //var inOrginalNotInNew = (from xmlElement in doc.Root.Descendants()
+            //                         where !repeatedElements.Contains(new
+            //                         {
+            //                             count = doc.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         })
+            //                         select new
+            //                         {
+            //                             count = doc.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         }).Distinct();
+            //var inNewNotInOrginal = (from xmlElement in doc2.Root.Descendants()
+            //                         where !repeatedElements.Contains(new
+            //                         {
+            //                             count = doc2.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         })
+            //                         select new
+            //                         {
+            //                             count = doc2.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         }).Distinct();
+            //#endregion
+            //var XMLRepeatedDifferences =from originalDifference in inOrginalNotInNew
+            //                      join newDifference in inNewNotInOrginal
+            //                      on originalDifference.name equals newDifference.name
+            //                      select new
+            //                      {
+            //                           firstCount= originalDifference.count,
+            //                           secondCount= newDifference.count,
+            //                           name= originalDifference.name
+            //                      };
+            //foreach (var element in XMLRepeatedDifferences)
+            //{
+            //    Console.WriteLine("XML Original: " + element.firstCount);
+            //    Console.WriteLine("XML New: " + element.secondCount);
+            //    Console.WriteLine("XML Name: " + element.name);
+            //}
+            //Console.WriteLine(doc.Root.Descendants().Count());
+            //Console.WriteLine(doc2.Root.Descendants().Count());
+            #endregion
+            //Entity = serializeSample.Deserialize(xmlFileName, Entity);
+            #region XML Compare
             XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
             XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
             XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
@@ -500,23 +618,69 @@ namespace XmlTest
                                                       where !(from simmpleElement in doc2.Root.Descendants()
                                                               select simmpleElement.Name.ToString()).Contains(xmlElement.Name.ToString())
                                                       select xmlElement;
+
             IEnumerable<XElement> elementsRepeated = (from xmlElement in doc.Root.Descendants()
                                                       group xmlElement by xmlElement.Name into x
                                                       select x.First());
+
             foreach (XElement element in elementsRepeated)
             {
                 if (doc.Root.Descendants(element.Name.ToString()).Count() > 1 && doc.Root.Descendants(element.Name.ToString()).Attributes().Count() > 0)
                     foreach (var item in doc.Root.Descendants(element.Name.ToString()))
                     {
                         string path = string.Join("/", item.Ancestors().Select(e => e.Name.LocalName).Reverse());
-                        Console.WriteLine(path + "/" + item.Name.LocalName);
+                        //Console.WriteLine(path + "/" + item.Name.LocalName);
                         foreach (XAttribute i in item.Attributes())
                         {
-                            Console.WriteLine(i);
+                            //Console.WriteLine(i);
                         }
                     }
             }
+
+            List<string> tags = new List<string>();
+
+            foreach (XElement element in elementsRepeated)
+            {
+                var tag = element.Name.ToString();
+                var tagSimpl = element.Name.LocalName.ToString();
+                var descendants = doc.Root.Descendants(tag);
+                var descendantsCount = descendants.Count();
+
+                if (descendantsCount > 1 /*&& descendants.Attributes().Count() > 0*/)
+                {
+                    var parents = descendants.Select(e => e.Parent).Distinct();
+                    if(descendantsCount > parents.Count())
+                    {
+                        //get sibling
+                        var duplicatedParents = descendants.GroupBy(e => e.Parent.Name)
+                                .Where(g => g.Count() > 1)
+                                .Select(g => g.Key);
+
+                        foreach (var item in duplicatedParents)
+                        {
+                            Console.WriteLine($"Tag: {tagSimpl} & Parent: {item}");
+                        }
+                    }
+
+                    //if (descendants.Any(e => e.Attributes().Count() == 0))
+                    //{
+                    //    tags.Add(tag);
+                    //}
+                }
+
+
+            }
+
+            #region Comments
+            //foreach (var item in tags)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
+
+            #endregion
+
+            Console.ReadKey();
         }
     }
 }

@@ -44,3 +44,14 @@ C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest
 C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.csproj.CopyComplete
 C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.exe
 C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\obj\Debug\XmlTest.pdb
+F:\Work\XMLInvoice\bin\Debug\XmlTest.exe.config
+F:\Work\XMLInvoice\bin\Debug\XmlTest.exe
+F:\Work\XMLInvoice\bin\Debug\XmlTest.pdb
+F:\Work\XMLInvoice\bin\Debug\Newtonsoft.Json.dll
+F:\Work\XMLInvoice\bin\Debug\Newtonsoft.Json.xml
+F:\Work\XMLInvoice\obj\Debug\XmlTest.csproj.AssemblyReference.cache
+F:\Work\XMLInvoice\obj\Debug\XmlTest.csproj.SuggestedBindingRedirects.cache
+F:\Work\XMLInvoice\obj\Debug\XmlTest.csproj.CoreCompileInputs.cache
+F:\Work\XMLInvoice\obj\Debug\XmlTest.csproj.CopyComplete
+F:\Work\XMLInvoice\obj\Debug\XmlTest.exe
+F:\Work\XMLInvoice\obj\Debug\XmlTest.pdb

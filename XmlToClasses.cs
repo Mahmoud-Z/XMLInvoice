@@ -20,7 +20,7 @@ namespace XmlTest
 
         private string profileIDField;//Found
 
-        private ID idField;//Found
+        private string idField;//Found
 
         private string uUIDField;//Found
 
@@ -94,7 +94,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -523,11 +523,11 @@ namespace XmlTest
     public partial class OrderReference
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -571,11 +571,11 @@ namespace XmlTest
     public partial class BillingReferenceInvoiceDocumentReference
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -596,11 +596,11 @@ namespace XmlTest
     public partial class ContractDocumentReference
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -621,7 +621,7 @@ namespace XmlTest
     public partial class AdditionalDocumentReference
     {
 
-        private ID idField;
+        private string idField;
 
         private AdditionalDocumentReferenceAttachment attachmentField;
 
@@ -629,7 +629,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -857,7 +857,7 @@ namespace XmlTest
     public partial class SignatureInformation
     {
 
-        private ID idField;
+        private string idField;
 
         private string referencedSignatureIDField;
 
@@ -865,7 +865,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -1623,13 +1623,13 @@ namespace XmlTest
     public partial class Signature1
     {
 
-        private ID idField;
+        private string idField;
 
         private string signatureMethodField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -1755,11 +1755,11 @@ namespace XmlTest
     public partial class AccountingSupplierPartyPartyPartyIdentification
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -1993,11 +1993,11 @@ namespace XmlTest
     public partial class AccountingSupplierPartyPartyPartyTaxSchemeTaxScheme
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -2371,11 +2371,11 @@ namespace XmlTest
     public partial class AccountingCustomerPartyPartyPartyTaxSchemeTaxScheme
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -2559,7 +2559,7 @@ namespace XmlTest
 
         private string paymentNoteField;
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -2577,7 +2577,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -2767,7 +2767,7 @@ namespace XmlTest
     public partial class AllowanceChargeTaxCategory
     {
 
-        private ID idField;
+        private string idField;
 
         private decimal percentField;
 
@@ -2775,7 +2775,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -2822,11 +2822,11 @@ namespace XmlTest
     public partial class AllowanceChargeTaxCategoryTaxScheme
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -3461,11 +3461,11 @@ namespace XmlTest
     public partial class TaxTotalTaxSubtotalTaxCategoryTaxScheme
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -3486,7 +3486,7 @@ namespace XmlTest
     public partial class InvoiceLine
     {
 
-        private ID idField;
+        private string idField;
 
         private InvoicedQuantity invoicedQuantityField;
 
@@ -3502,7 +3502,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -3880,11 +3880,11 @@ namespace XmlTest
     public partial class InvoiceLineItemBuyersItemIdentification
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
@@ -3904,11 +3904,11 @@ namespace XmlTest
     public partial class InvoiceLineItemSellersItemIdentification
     {
 
-        private ID idField;
+        private string idField;
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public ID ID
+        public string ID
         {
             get
             {
