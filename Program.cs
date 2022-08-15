@@ -29,7 +29,7 @@ namespace XmlTest
             //}
             //Console.WriteLine(sb.ToString());            
             //----------------------------------Fill xml with data-----------------------------------
-            string xmlFileName = @"F:\Work\XMLInvoice\Test\";
+            string xmlFileName = @"Test\";
             SerializeSampleViewModel<Invoice> serializeSample = new SerializeSampleViewModel<Invoice>();
             //CustomerRoot Entity = new CustomerRoot();
             //Entity.Customers = new List<Customer>(){
@@ -609,6 +609,78 @@ namespace XmlTest
             //Console.WriteLine(doc.Root.Descendants().Count());
             //Console.WriteLine(doc2.Root.Descendants().Count());
             #endregion
+            //Entity = serializeSample.Deserialize(xmlFileName, Entity);
+            #region XML Compare
+            XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+            XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
+            XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
+            IEnumerable<XElement> elementsDifferent = from xmlElement in doc.Root.Descendants()
+                                                      where !(from simmpleElement in doc2.Root.Descendants()
+                                                              select simmpleElement.Name.ToString()).Contains(xmlElement.Name.ToString())
+                                                      select xmlElement;
+
+            IEnumerable<XElement> elementsRepeated = (from xmlElement in doc.Root.Descendants()
+                                                      group xmlElement by xmlElement.Name into x
+                                                      select x.First());
+
+            foreach (XElement element in elementsRepeated)
+            {
+                if (doc.Root.Descendants(element.Name.ToString()).Count() > 1 && doc.Root.Descendants(element.Name.ToString()).Attributes().Count() > 0)
+                    foreach (var item in doc.Root.Descendants(element.Name.ToString()))
+                    {
+                        string path = string.Join("/", item.Ancestors().Select(e => e.Name.LocalName).Reverse());
+                        //Console.WriteLine(path + "/" + item.Name.LocalName);
+                        foreach (XAttribute i in item.Attributes())
+                        {
+                            //Console.WriteLine(i);
+                        }
+                    }
+            }
+
+            List<string> tags = new List<string>();
+
+            foreach (XElement element in elementsRepeated)
+            {
+                var tag = element.Name.ToString();
+                var tagSimpl = element.Name.LocalName.ToString();
+                var descendants = doc.Root.Descendants(tag);
+                var descendantsCount = descendants.Count();
+
+                if (descendantsCount > 1 /*&& descendants.Attributes().Count() > 0*/)
+                {
+                    var parents = descendants.Select(e => e.Parent).Distinct();
+                    if(descendantsCount > parents.Count())
+                    {
+                        //get sibling
+                        var duplicatedParents = descendants.GroupBy(e => e.Parent.Name)
+                                .Where(g => g.Count() > 1)
+                                .Select(g => g.Key);
+
+                        foreach (var item in duplicatedParents)
+                        {
+                            Console.WriteLine($"Tag: {tagSimpl} & Parent: {item}");
+                        }
+                    }
+
+                    //if (descendants.Any(e => e.Attributes().Count() == 0))
+                    //{
+                    //    tags.Add(tag);
+                    //}
+                }
+
+
+            }
+
+            #region Comments
+            //foreach (var item in tags)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
+            #endregion
+
+            Console.ReadKey();
         }
     }
 }
