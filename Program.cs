@@ -29,7 +29,7 @@ namespace XmlTest
             //}
             //Console.WriteLine(sb.ToString());            
             //----------------------------------Fill xml with data-----------------------------------
-            string xmlFileName = @"C:\Users\MahmoudGamal\OneDrive - ACT\Desktop\Web\c#\XMLInvoice\Test\";
+            string xmlFileName = @"F:\Work\XMLInvoice\Test\";
             SerializeSampleViewModel<Invoice> serializeSample = new SerializeSampleViewModel<Invoice>();
             //CustomerRoot Entity = new CustomerRoot();
             //Entity.Customers = new List<Customer>(){
@@ -493,29 +493,120 @@ namespace XmlTest
             #endregion
             //Entity = serializeSample.Deserialize(xmlFileName, Entity);
             #region XML Compare
-            XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
-            XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
-            XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
-            IEnumerable<XElement> elementsDifferent = from xmlElement in doc.Root.Descendants()
-                                                      where !(from simmpleElement in doc2.Root.Descendants()
-                                                              select simmpleElement.Name.ToString()).Contains(xmlElement.Name.ToString())
-                                                      select xmlElement;
-            IEnumerable<XElement> elementsRepeated = (from xmlElement in doc.Root.Descendants()
-                                                      group xmlElement by xmlElement.Name into x
-                                                      select x.First());
-            foreach (XElement element in elementsRepeated)
-            {
-                if (doc.Root.Descendants(element.Name.ToString()).Count() > 1 && doc.Root.Descendants(element.Name.ToString()).Attributes().Count() > 0)
-                    foreach (var item in doc.Root.Descendants(element.Name.ToString()))
-                    {
-                        string path = string.Join("/", item.Ancestors().Select(e => e.Name.LocalName).Reverse());
-                        Console.WriteLine(path + "/" + item.Name.LocalName);
-                        foreach (XAttribute i in item.Attributes())
-                        {
-                            Console.WriteLine(i);
-                        }
-                    }
-            }
+            //XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+            //XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
+            //XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
+            //IEnumerable<XElement> elementsDifferent = from xmlElement in doc.Root.Descendants()
+            //                                          where !(from simmpleElement in doc2.Root.Descendants()
+            //                                                  select simmpleElement.Name.ToString()).Contains(xmlElement.Name.ToString())
+            //                                          select xmlElement;
+            //IEnumerable<XElement> elementsRepeated = (from xmlElement in doc.Root.Descendants()
+            //                                          group xmlElement by xmlElement.Name into x
+            //                                          select x.First());
+            //foreach (XElement element in elementsRepeated)
+            //{
+            //    if (doc.Root.Descendants(element.Name.ToString()).Count() > 1 && doc.Root.Descendants(element.Name.ToString()).Attributes().Count() > 0)
+            //        foreach (var item in doc.Root.Descendants(element.Name.ToString()))
+            //        {
+            //            string path = string.Join("/", item.Ancestors().Select(e => e.Name.LocalName).Reverse());
+            //            Console.WriteLine(path + "/" + item.Name.LocalName);
+            //            foreach (XAttribute i in item.Attributes())
+            //            {
+            //                Console.WriteLine(i);
+            //            }
+            //        }
+            //}
+            #endregion
+            #region XML herirachey Compare
+            //XNamespace ns = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
+            //XDocument doc = XDocument.Load(xmlFileName + "XML Test.xml");
+            //XDocument doc2 = XDocument.Load(xmlFileName + "sample.xml");
+            //#region check xml structure
+            //var elementsJoined = (from xmlElement in doc.Root.Descendants()
+            //                        join simmpleElement in doc2.Root.Descendants()
+            //                        on new
+            //                        {
+            //                            Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                            name = xmlElement.Name.LocalName
+            //                        } equals new
+            //                        {
+            //                            Ancestors = string.Join("/", simmpleElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                            name = simmpleElement.Name.LocalName
+            //                        }
+            //                        select new
+            //                        {
+            //                            Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                            name = xmlElement.Name.LocalName
+            //                        });
+            //var XMLDifferences = (from xmlElement in doc.Root.Descendants()
+            //                      where !elementsJoined.Contains(new
+            //                      {
+            //                          Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                          name = xmlElement.Name.LocalName
+            //                      })
+            //                      select new
+            //                      {
+            //                          Ancestors = string.Join("/", xmlElement.Ancestors().Select(e => e.Name.LocalName).Reverse()),
+            //                          name = xmlElement.Name.LocalName
+            //                      });
+            //#endregion
+            //#region check the difference in tags
+            //var repeatedElements = (from originalElement in doc.Root.Descendants()
+            //                       join newElement in doc2.Root.Descendants()
+            //                       on new
+            //                       {
+            //                           count = doc.Root.Descendants(originalElement.Name).Count(),
+            //                           name = originalElement.Name.LocalName
+            //                       } equals new
+            //                       {
+            //                           count = doc2.Root.Descendants(newElement.Name).Count(),
+            //                           name = newElement.Name.LocalName
+            //                       }
+            //                       select new
+            //                       {
+            //                           count = doc.Root.Descendants(originalElement.Name).Count(),
+            //                           name = originalElement.Name.LocalName
+            //                       }).Distinct();
+            //var inOrginalNotInNew = (from xmlElement in doc.Root.Descendants()
+            //                         where !repeatedElements.Contains(new
+            //                         {
+            //                             count = doc.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         })
+            //                         select new
+            //                         {
+            //                             count = doc.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         }).Distinct();
+            //var inNewNotInOrginal = (from xmlElement in doc2.Root.Descendants()
+            //                         where !repeatedElements.Contains(new
+            //                         {
+            //                             count = doc2.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         })
+            //                         select new
+            //                         {
+            //                             count = doc2.Root.Descendants(xmlElement.Name).Count(),
+            //                             name = xmlElement.Name.LocalName
+            //                         }).Distinct();
+            //#endregion
+            //var XMLRepeatedDifferences =from originalDifference in inOrginalNotInNew
+            //                      join newDifference in inNewNotInOrginal
+            //                      on originalDifference.name equals newDifference.name
+            //                      select new
+            //                      {
+            //                           firstCount= originalDifference.count,
+            //                           secondCount= newDifference.count,
+            //                           name= originalDifference.name
+            //                      };
+            //foreach (var element in XMLRepeatedDifferences)
+            //{
+            //    Console.WriteLine("XML Original: " + element.firstCount);
+            //    Console.WriteLine("XML New: " + element.secondCount);
+            //    Console.WriteLine("XML Name: " + element.name);
+            //}
+            //Console.WriteLine(doc.Root.Descendants().Count());
+            //Console.WriteLine(doc2.Root.Descendants().Count());
             #endregion
         }
     }
