@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionSource.cs" />
     <Compile Include="XmlToClasses.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerRoot.cs" />
@@ -59,9 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Test\sample.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Test\simplified_credit_note.xml" />
+    <Content Include="Test\simplified_invoice_signed.xml" />
+    <Content Include="Test\standard_credit_note.xml" />
+    <Content Include="Test\standard_invoice.xml" />
     <Content Include="Test\XML Test.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace XmlTest
@@ -24,7 +26,6 @@ namespace XmlTest
             using(var sw = new StringWriter())
             {
                 serializer.Serialize(sw, Entity, namespaces);
-                Console.WriteLine(sw);
                 ResultText = sw.ToString();
             }
             WriteXmlFile(ResultText, xmlFileName);
@@ -63,7 +64,9 @@ namespace XmlTest
                 File.Delete(xmlFileName + "/sample.xml");
             }
             File.AppendAllText(xmlFileName+"/sample.xml", xml,Encoding.Unicode);
-
+            XDocument doc = XDocument.Load(xmlFileName + "sample.xml");
+            doc.Descendants().Where(e => e.IsEmpty || string.IsNullOrEmpty(e.Value)/* || e.Value.ToString() == "-1" || e.Value.ToString() == "false"*/).Remove();
+            doc.Save(xmlFileName + "sample.xml");
         }
     }
 }

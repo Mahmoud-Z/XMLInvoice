@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-namespace XmlTest
+
+namespace E_Invoice.Core.XMLStructure
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2", IsNullable = false)]
     public partial class Invoice
     {
 
-        private decimal uBLVersionIDField;//Missed
+        //private decimal uBLVersionIDField;//Missed
 
         private string profileIDField;//Found
 
@@ -25,9 +27,9 @@ namespace XmlTest
 
         private string uUIDField;//Found
 
-        private System.DateTime issueDateField;//Found
+        private string issueDateField;//Found
 
-        private System.DateTime issueTimeField;//Found
+        private string issueTimeField;//Found
 
         private InvoiceTypeCode invoiceTypeCodeField;//Found
 
@@ -43,7 +45,7 @@ namespace XmlTest
 
         private ContractDocumentReference contractDocumentReferenceField;//Found
 
-        private AdditionalDocumentReference[] additionalDocumentReferenceField;//Found
+        private List<AdditionalDocumentReference> additionalDocumentReferenceField;//Found
 
         private UBLExtensions uBLExtensionsField;//Found
 
@@ -59,25 +61,25 @@ namespace XmlTest
 
         private AllowanceCharge allowanceChargeField;//Found
 
+        private List<TaxTotal> taxTotalField;//Found
+
         private LegalMonetaryTotal legalMonetaryTotalField;//Found
 
-        private TaxTotal taxTotalField;//Found
-
-        private InvoiceLine invoiceLineField;//Found
+        private List<InvoiceLine> invoiceLineField;//Found
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public decimal UBLVersionID
-        {
-            get
-            {
-                return this.uBLVersionIDField;
-            }
-            set
-            {
-                this.uBLVersionIDField = value;
-            }
-        }
+        //[XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        //public decimal UBLVersionID
+        //{
+        //    get
+        //    {
+        //        return this.uBLVersionIDField;
+        //    }
+        //    set
+        //    {
+        //        this.uBLVersionIDField = value;
+        //    }
+        //}
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
@@ -85,7 +87,7 @@ namespace XmlTest
         {
             get
             {
-                return this.profileIDField;
+                return "reporting:1.0"; //this.profileIDField;
             }
             set
             {
@@ -122,8 +124,8 @@ namespace XmlTest
         }
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "date")]
-        public System.DateTime IssueDate
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/*, DataType = "date"*/)]
+        public string IssueDate
         {
             get
             {
@@ -136,8 +138,8 @@ namespace XmlTest
         }
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "time")]
-        public System.DateTime IssueTime
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/*, DataType = "time"*/)]
+        public string IssueTime
         {
             get
             {
@@ -249,7 +251,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute("AdditionalDocumentReference", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-        public AdditionalDocumentReference[] AdditionalDocumentReference
+        public List<AdditionalDocumentReference> AdditionalDocumentReference
         {
             get
             {
@@ -361,6 +363,20 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+        public List<TaxTotal> TaxTotal
+        {
+            get
+            {
+                return this.taxTotalField;
+            }
+            set
+            {
+                this.taxTotalField = value;
+            }
+        }
+
+        /// <remarks/>
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
         public LegalMonetaryTotal LegalMonetaryTotal
         {
             get
@@ -375,21 +391,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-        public TaxTotal TaxTotal
-        {
-            get
-            {
-                return this.taxTotalField;
-            }
-            set
-            {
-                this.taxTotalField = value;
-            }
-        }
-
-        /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
-        public InvoiceLine InvoiceLine
+        public List<InvoiceLine> InvoiceLine
         {
             get
             {
@@ -403,8 +405,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class ID
@@ -476,20 +478,20 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class InvoiceTypeCode
     {
 
-        private ushort nameField;
+        private string nameField;
 
         private ushort valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
-        public ushort name
+        public string name
         {
             get
             {
@@ -517,8 +519,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class OrderReference
@@ -542,8 +544,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class BillingReference
@@ -566,8 +568,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class BillingReferenceInvoiceDocumentReference
     {
@@ -590,8 +592,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class ContractDocumentReference
@@ -615,8 +617,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class AdditionalDocumentReference
@@ -671,8 +673,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AdditionalDocumentReferenceAttachment
     {
@@ -695,8 +697,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class EmbeddedDocumentBinaryObject
@@ -736,8 +738,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", IsNullable = false)]
     public partial class UBLExtensions
@@ -760,8 +762,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2")]
     public partial class UBLExtensionsUBLExtension
     {
@@ -798,8 +800,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2")]
     public partial class UBLExtensionsUBLExtensionExtensionContent
     {
@@ -821,8 +823,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2", IsNullable = false)]
     public partial class UBLDocumentSignatures
@@ -831,8 +833,8 @@ namespace XmlTest
         [XmlNamespaceDeclarations]
         public XmlSerializerNamespaces xmlns = new XmlSerializerNamespaces(
             new[] { new XmlQualifiedName("sig", "urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"),
-            new XmlQualifiedName("sac", "urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"),
-            new XmlQualifiedName("sbc", "urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2"),});
+        new XmlQualifiedName("sac", "urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"),
+        new XmlQualifiedName("sbc", "urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2"),});
         private SignatureInformation signatureInformationField;
 
         /// <remarks/>
@@ -851,8 +853,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2", IsNullable = false)]
     public partial class SignatureInformation
@@ -908,8 +910,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     [XmlRootAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#", IsNullable = false)]
     public partial class Signature
@@ -995,8 +997,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureSignedInfo
     {
@@ -1049,8 +1051,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureSignedInfoCanonicalizationMethod
     {
@@ -1073,8 +1075,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureSignedInfoSignatureMethod
     {
@@ -1097,8 +1099,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureSignedInfoReference
     {
@@ -1199,8 +1201,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureSignedInfoReferenceTransform
     {
@@ -1238,8 +1240,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureSignedInfoReferenceDigestMethod
     {
@@ -1262,8 +1264,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureKeyInfo
     {
@@ -1285,8 +1287,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureKeyInfoX509Data
     {
@@ -1308,8 +1310,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     public partial class SignatureObject
     {
@@ -1332,8 +1334,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     [XmlRootAttribute(Namespace = "http://uri.etsi.org/01903/v1.3.2#", IsNullable = false)]
     public partial class QualifyingProperties
@@ -1374,8 +1376,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     public partial class QualifyingPropertiesSignedProperties
     {
@@ -1413,8 +1415,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     public partial class QualifyingPropertiesSignedPropertiesSignedSignatureProperties
     {
@@ -1451,8 +1453,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     public partial class QualifyingPropertiesSignedPropertiesSignedSignaturePropertiesSigningCertificate
     {
@@ -1474,8 +1476,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     public partial class QualifyingPropertiesSignedPropertiesSignedSignaturePropertiesSigningCertificateCert
     {
@@ -1512,8 +1514,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     public partial class QualifyingPropertiesSignedPropertiesSignedSignaturePropertiesSigningCertificateCertCertDigest
     {
@@ -1552,8 +1554,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.w3.org/2000/09/xmldsig#")]
     [XmlRootAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#", IsNullable = false)]
     public partial class DigestMethod
@@ -1577,8 +1579,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "http://uri.etsi.org/01903/v1.3.2#")]
     public partial class QualifyingPropertiesSignedPropertiesSignedSignaturePropertiesSigningCertificateCertIssuerSerial
     {
@@ -1617,8 +1619,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute("Signature", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class Signature1
@@ -1658,8 +1660,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class AccountingSupplierParty
@@ -1682,8 +1684,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyParty
     {
@@ -1750,8 +1752,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyPartyPartyIdentification
     {
@@ -1774,8 +1776,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyPartyPostalAddress
     {
@@ -1784,17 +1786,17 @@ namespace XmlTest
 
         private string additionalStreetNameField;
 
-        private byte buildingNumberField;
+        private string buildingNumberField;
 
         private string plotIdentificationField;
 
+        private string citySubdivisionNameField;
+
         private string cityNameField;
 
-        private uint postalZoneField;
+        private string postalZoneField;
 
         private string countrySubentityField;
-
-        private string citySubdivisionNameField;
 
         private AccountingSupplierPartyPartyPostalAddressCountry countryField;
 
@@ -1828,7 +1830,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte BuildingNumber
+        public string BuildingNumber
         {
             get
             {
@@ -1856,6 +1858,20 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CitySubdivisionName
+        {
+            get
+            {
+                return this.citySubdivisionNameField;
+            }
+            set
+            {
+                this.citySubdivisionNameField = value;
+            }
+        }//Found
+
+        /// <remarks/>
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
         public string CityName
         {
             get
@@ -1870,7 +1886,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public uint PostalZone
+        public string PostalZone
         {
             get
             {
@@ -1897,20 +1913,6 @@ namespace XmlTest
         }//Found
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public string CitySubdivisionName
-        {
-            get
-            {
-                return this.citySubdivisionNameField;
-            }
-            set
-            {
-                this.citySubdivisionNameField = value;
-            }
-        }//Found
-
-        /// <remarks/>
         public AccountingSupplierPartyPartyPostalAddressCountry Country
         {
             get
@@ -1925,8 +1927,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyPartyPostalAddressCountry
     {
@@ -1949,8 +1951,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyPartyPartyTaxScheme
     {
@@ -1988,8 +1990,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyPartyPartyTaxSchemeTaxScheme
     {
@@ -2012,8 +2014,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingSupplierPartyPartyPartyLegalEntity
     {
@@ -2036,8 +2038,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class AccountingCustomerParty
@@ -2060,8 +2062,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyParty
     {
@@ -2128,8 +2130,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyPartyPartyIdentification
     {
@@ -2152,8 +2154,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyPartyPostalAddress
     {
@@ -2162,17 +2164,17 @@ namespace XmlTest
 
         private string additionalStreetNameField;
 
-        private byte buildingNumberField;
+        private string buildingNumberField;
 
         private string plotIdentificationField;
 
+        private string citySubdivisionNameField;
+
         private string cityNameField;
 
-        private uint postalZoneField;
+        private string postalZoneField;
 
         private string countrySubentityField;
-
-        private string citySubdivisionNameField;
 
         private AccountingCustomerPartyPartyPostalAddressCountry countryField;
 
@@ -2206,7 +2208,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte BuildingNumber
+        public string BuildingNumber
         {
             get
             {
@@ -2234,6 +2236,20 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public string CitySubdivisionName
+        {
+            get
+            {
+                return this.citySubdivisionNameField;
+            }
+            set
+            {
+                this.citySubdivisionNameField = value;
+            }
+        }//Found
+
+        /// <remarks/>
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
         public string CityName
         {
             get
@@ -2248,7 +2264,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public uint PostalZone
+        public string PostalZone
         {
             get
             {
@@ -2275,20 +2291,6 @@ namespace XmlTest
         }//Found
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public string CitySubdivisionName
-        {
-            get
-            {
-                return this.citySubdivisionNameField;
-            }
-            set
-            {
-                this.citySubdivisionNameField = value;
-            }
-        }//Found
-
-        /// <remarks/>
         public AccountingCustomerPartyPartyPostalAddressCountry Country
         {
             get
@@ -2303,8 +2305,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyPartyPostalAddressCountry
     {
@@ -2327,8 +2329,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyPartyPartyTaxScheme
     {
@@ -2366,8 +2368,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyPartyPartyTaxSchemeTaxScheme
     {
@@ -2390,8 +2392,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AccountingCustomerPartyPartyPartyLegalEntity
     {
@@ -2414,20 +2416,20 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class Delivery
     {
 
-        private System.DateTime actualDeliveryDateField;
+        private string actualDeliveryDateField;
 
-        private System.DateTime latestDeliveryDateField;
+        private string latestDeliveryDateField;
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "date")]
-        public System.DateTime ActualDeliveryDate
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/*, DataType = "date"*/)]
+        public string ActualDeliveryDate
         {
             get
             {
@@ -2440,8 +2442,8 @@ namespace XmlTest
         }//Found
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", DataType = "date")]
-        public System.DateTime LatestDeliveryDate
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/*, DataType = "date"*/)]
+        public string LatestDeliveryDate
         {
             get
             {
@@ -2455,8 +2457,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class PaymentMeans
@@ -2511,16 +2513,16 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class PaymentMeansCode
     {
-        
+
         private string listIDField;
 
-        private byte valueField;
+        private string valueField;
         //missed
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -2538,7 +2540,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public byte Value
+        public string Value
         {
             get
             {
@@ -2552,8 +2554,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class PaymentMeansPayeeFinancialAccount
     {
@@ -2592,8 +2594,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class AllowanceCharge
@@ -2680,8 +2682,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class Amount
@@ -2721,8 +2723,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class BaseAmount
@@ -2762,8 +2764,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AllowanceChargeTaxCategory
     {
@@ -2817,8 +2819,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class AllowanceChargeTaxCategoryTaxScheme
     {
@@ -2841,8 +2843,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class LegalMonetaryTotal
@@ -2850,11 +2852,11 @@ namespace XmlTest
 
         private LineExtensionAmount lineExtensionAmountField;
 
-        private AllowanceTotalAmount allowanceTotalAmountField;
-
         private TaxExclusiveAmount taxExclusiveAmountField;
 
         private TaxInclusiveAmount taxInclusiveAmountField;
+
+        private AllowanceTotalAmount allowanceTotalAmountField;
 
         private PrepaidAmount prepaidAmountField;
 
@@ -2871,20 +2873,6 @@ namespace XmlTest
             set
             {
                 this.lineExtensionAmountField = value;
-            }
-        }//Found
-
-        /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public AllowanceTotalAmount AllowanceTotalAmount
-        {
-            get
-            {
-                return this.allowanceTotalAmountField;
-            }
-            set
-            {
-                this.allowanceTotalAmountField = value;
             }
         }//Found
 
@@ -2918,6 +2906,20 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public AllowanceTotalAmount AllowanceTotalAmount
+        {
+            get
+            {
+                return this.allowanceTotalAmountField;
+            }
+            set
+            {
+                this.allowanceTotalAmountField = value;
+            }
+        }//Found
+
+        /// <remarks/>
+        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
         public PrepaidAmount PrepaidAmount
         {
             get
@@ -2946,8 +2948,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class LineExtensionAmount
@@ -2987,8 +2989,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class AllowanceTotalAmount
@@ -2996,7 +2998,7 @@ namespace XmlTest
 
         private string currencyIDField;
 
-        private byte valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -3014,7 +3016,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public byte Value
+        public decimal Value
         {
             get
             {
@@ -3028,8 +3030,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class TaxExclusiveAmount
@@ -3069,8 +3071,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class TaxInclusiveAmount
@@ -3078,7 +3080,7 @@ namespace XmlTest
 
         private string currencyIDField;
 
-        private ushort valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -3096,7 +3098,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public ushort Value
+        public decimal Value
         {
             get
             {
@@ -3110,8 +3112,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class PrepaidAmount
@@ -3119,7 +3121,7 @@ namespace XmlTest
 
         private string currencyIDField;
 
-        private ushort valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -3137,7 +3139,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public ushort Value
+        public decimal Value
         {
             get
             {
@@ -3151,8 +3153,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class PayableAmount
@@ -3160,7 +3162,7 @@ namespace XmlTest
 
         private string currencyIDField;
 
-        private ushort valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -3178,7 +3180,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public ushort Value
+        public decimal Value
         {
             get
             {
@@ -3192,20 +3194,20 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class TaxTotal
     {
 
-        private TaxAmount taxAmountField;
+        private TaxAmount[] taxAmountField;
 
-        private TaxTotalTaxSubtotal taxSubtotalField;
+        private List<TaxTotalTaxSubtotal> taxSubtotalField;
 
         /// <remarks/>
-        [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public TaxAmount TaxAmount
+        [XmlElementAttribute("TaxAmount", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public TaxAmount[] TaxAmount
         {
             get
             {
@@ -3218,7 +3220,8 @@ namespace XmlTest
         }//Found
 
         /// <remarks/>
-        public TaxTotalTaxSubtotal TaxSubtotal
+        [XmlElementAttribute("TaxSubtotal", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
+        public List<TaxTotalTaxSubtotal> TaxSubtotal
         {
             get
             {
@@ -3232,8 +3235,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class TaxAmount
@@ -3273,8 +3276,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class TaxTotalTaxSubtotal
     {
@@ -3328,8 +3331,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class TaxableAmount
@@ -3369,8 +3372,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class TaxTotalTaxSubtotalTaxCategory
     {
@@ -3379,7 +3382,7 @@ namespace XmlTest
 
         private decimal percentField;
 
-        private byte taxExemptionReasonCodeField;
+        private string taxExemptionReasonCodeField;
 
         private string taxExemptionReasonField;
 
@@ -3415,7 +3418,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlElementAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
-        public byte TaxExemptionReasonCode
+        public string TaxExemptionReasonCode
         {
             get
             {
@@ -3456,8 +3459,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class TaxTotalTaxSubtotalTaxCategoryTaxScheme
     {
@@ -3480,8 +3483,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", IsNullable = false)]
     public partial class InvoiceLine
@@ -3597,8 +3600,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class InvoicedQuantity
@@ -3606,7 +3609,7 @@ namespace XmlTest
 
         private string unitCodeField;
 
-        private byte valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -3624,7 +3627,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public byte Value
+        public decimal Value
         {
             get
             {
@@ -3638,8 +3641,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineAllowanceCharge
     {
@@ -3710,8 +3713,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineTaxTotal
     {
@@ -3750,8 +3753,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class RoundingAmount
@@ -3791,8 +3794,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineItem
     {
@@ -3875,8 +3878,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineItemBuyersItemIdentification
     {
@@ -3899,8 +3902,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineItemSellersItemIdentification
     {
@@ -3923,8 +3926,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineItemStandardItemIdentification
     {
@@ -3947,8 +3950,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineItemClassifiedTaxCategory
     {
@@ -4002,8 +4005,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLineItemClassifiedTaxCategoryTaxScheme
     {
@@ -4026,8 +4029,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLinePrice
     {
@@ -4081,8 +4084,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class PriceAmount
@@ -4090,7 +4093,7 @@ namespace XmlTest
 
         private string currencyIDField;
 
-        private ushort valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -4108,7 +4111,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public ushort Value
+        public decimal Value
         {
             get
             {
@@ -4122,8 +4125,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
     [XmlRootAttribute(Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", IsNullable = false)]
     public partial class BaseQuantity
@@ -4131,7 +4134,7 @@ namespace XmlTest
 
         private string unitCodeField;
 
-        private byte valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [XmlAttributeAttribute()]
@@ -4149,7 +4152,7 @@ namespace XmlTest
 
         /// <remarks/>
         [XmlTextAttribute()]
-        public byte Value
+        public decimal Value
         {
             get
             {
@@ -4163,8 +4166,8 @@ namespace XmlTest
     }
 
     /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [SerializableAttribute()]
+    [DesignerCategoryAttribute("code")]
     [XmlTypeAttribute(AnonymousType = true, Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")]
     public partial class InvoiceLinePriceAllowanceCharge
     {
@@ -4220,3 +4223,4 @@ namespace XmlTest
 
 
 }
+
